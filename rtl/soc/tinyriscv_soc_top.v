@@ -110,6 +110,18 @@ module tinyriscv_soc_top(
     wire[`MemBus] s5_data_i;
     wire s5_we_o;
 
+    // slave 6 interface
+    wire[`MemAddrBus] s6_addr_o;
+    wire[`MemBus] s6_data_o;
+    wire[`MemBus] s6_data_i;
+    wire s6_we_o;
+
+    // slave 7 interface
+    wire[`MemAddrBus] s7_addr_o;
+    wire[`MemBus] s7_data_o;
+    wire[`MemBus] s7_data_i;
+    wire s7_we_o;
+
     // rib
     wire rib_hold_flag_o;
 
@@ -137,6 +149,10 @@ module tinyriscv_soc_top(
     // 低电平点亮LED
     // 低电平表示已经halt住CPU
     assign halted_ind = ~jtag_halt_req_o;
+
+    // slave 6/7 暂无外设,读取数据置0
+    assign s6_data_i = `ZeroWord;
+    assign s7_data_i = `ZeroWord;
 
 
     always @ (posedge clk) begin
@@ -319,6 +335,18 @@ module tinyriscv_soc_top(
         .s5_data_o(s5_data_o),
         .s5_data_i(s5_data_i),
         .s5_we_o(s5_we_o),
+
+        // slave 6 interface
+        .s6_addr_o(s6_addr_o),
+        .s6_data_o(s6_data_o),
+        .s6_data_i(s6_data_i),
+        .s6_we_o(s6_we_o),
+
+        // slave 7 interface
+        .s7_addr_o(s7_addr_o),
+        .s7_data_o(s7_data_o),
+        .s7_data_i(s7_data_i),
+        .s7_we_o(s7_we_o),
 
         .hold_flag_o(rib_hold_flag_o)
     );
