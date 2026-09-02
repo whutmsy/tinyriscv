@@ -2,3 +2,16 @@
 *.o
 *.ko
 *.obj
+transcript
+verify/modelsim.ini
+verify/rib_uvm.vcd
+verify/rib_uvm.wlf
+verify/transcript.log
+verify/vsim.wlf
+verify/work/_info
+verify/work/_lib.qdb
+verify/work/_lib1_0.qdb
+verify/work/_lib1_0.qpg
+verify/work/_lib1_0.qtl
+verify/work/_vmake
+verify/work/_dpi/dpi.tfdb
